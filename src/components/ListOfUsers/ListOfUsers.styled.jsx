@@ -14,10 +14,16 @@ export const BackImg = styled.img`
 `;
 
 export const List = styled.ul`
+  margin: 20px auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
-  width: 800px;
+  gap: 10px;
+  width: 380px;
+
+  @media screen and (min-width: 1440px) {
+    width: 790px;
+    gap: 30px;
+  }
 `;
 export const ListItem = styled.li`
   position: relative;
@@ -32,6 +38,7 @@ export const ListItem = styled.li`
 export const BtnFollow = styled.button`
   outline: none;
   padding: 14px;
+  margin-top: 26px;
   width: 196px;
   height: 50px;
   border: none;
@@ -63,26 +70,29 @@ export const BtnFollow = styled.button`
 `;
 
 export const ImgThumb = styled.div`
-position: absolute;
-    width: 62px;
-    height: 62px;
-    top: 186px;
-    left: 154px;
-    background-color: rgb(87, 54, 163);
-    border-radius: 50%;
-    display: flex;
-    align-items: end;
-    justify-content: center;
-
+  position: absolute;
+  width: 62px;
+  height: 62px;
+  top: 186px;
+  left: 154px;
+  background-color: rgb(87, 54, 163);
+  border-radius: 50%;
+  display: flex;
+  align-items: end;
+  justify-content: center;
 `;
 
 export const Ellipse = styled.img`
-    position: absolute;
-    right: 150px;
-    top: 178px;
-    
-  `
+  position: absolute;
+  right: 150px;
+  top: 178px;
+  z-index: 100;
+`;
 
+export const Avatar = styled.img`
+  position: absolute;
+  top: 15px;
+`;
 
 export const Line = styled.div`
   height: 8px;
@@ -91,5 +101,26 @@ export const Line = styled.div`
   box-shadow: 0px 4.391631126403809px 3.2937235832214355px 0px #fbf8ff inset;
   box-shadow: 0px 3.4369285106658936px 3.4369285106658936px 0px #0000000f;
   box-shadow: 0px -1.7184642553329468px 3.4369285106658936px 0px #ae7be3 inset;
+`;
 
+export const UserInfo = styled.p`
+  color: #ebd8ff;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.22;
+
+  &.tweets {
+    margin-top: 62px;
+  }
+
+  &.followers {
+    margin-top: 16px;
+  }
+`;
+
+export const InfoSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

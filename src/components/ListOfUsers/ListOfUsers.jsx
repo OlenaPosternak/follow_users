@@ -12,17 +12,27 @@ import {
   ImgThumb,
   Line,
   Ellipse,
+  UserInfo,
+  InfoSection,
+  Avatar,
 } from './ListOfUsers.styled';
 
 export const Users = () => {
-  const [userInfo, setUserInfo] = useState(users);
+  const [userInfo, setUserInfo] = useState(
+    JSON.parse(localStorage.getItem('userInfo')) || []
+  );
   const [followedUsersID, setFollowedUsersID] = useState(
     JSON.parse(localStorage.getItem('followedUsersID')) || []
   );
 
   useEffect(() => {
-    setUserInfo(users);
-  }, []);
+    if (userInfo.length !== 0) {
+      return setUserInfo(userInfo);
+    }
+    if (userInfo.length === 0) {
+      setUserInfo(users);
+    }
+  }, [userInfo]);
 
   const toggleFollowing = id => {
     if (followedUsersID.includes(id)) {
@@ -46,6 +56,7 @@ export const Users = () => {
     });
   };
 
+  localStorage.setItem('userInfo', JSON.stringify(userInfo));
   localStorage.setItem('followedUsersID', JSON.stringify(followedUsersID));
 
   return (
@@ -58,20 +69,25 @@ export const Users = () => {
             <div>
               <Ellipse src={ellipse} alt="ellipse" />
               <ImgThumb>
-              <img src={avatar} alt="user" width={50}/>
+                <Avatar src={avatar} alt="user" width={50} />
               </ImgThumb>
-              <Line/>
+              <Line />
             </div>
+            <InfoSection>
+              <UserInfo className="tweets">{tweets} TWEETS </UserInfo>
+              <UserInfo className="followers">
+                {followers.toLocaleString()} FOLLOWERS{' '}
+              </UserInfo>
 
-            <p>{tweets} TWEETS </p>
-            <p>{followers.toLocaleString()} FOLLOWERS </p>
-
-            <BtnFollow
-              onClick={() => toggleFollowing(id)}
-              className={followedUsersID.includes(id) ? 'following' : 'follow'}
-            >
-              {followedUsersID.includes(id) ? 'Following' : 'Follow'}
-            </BtnFollow>
+              <BtnFollow
+                onClick={() => toggleFollowing(id)}
+                className={
+                  followedUsersID.includes(id) ? 'following' : 'follow'
+                }
+              >
+                {followedUsersID.includes(id) ? 'Following' : 'Follow'}
+              </BtnFollow>
+            </InfoSection>
           </ListItem>
         );
       })}

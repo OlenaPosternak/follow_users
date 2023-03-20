@@ -1,5 +1,10 @@
-import { Users } from "./ListOfUsers/ListOfUsers";
-
+import { Users } from './ListOfUsers/ListOfUsers';
+import { Container } from './App.styled';
 export const App = () => {
-  return <Users/>;
+  return(
+    <Container>
+
+        <Users />
+    </Container>
+  ) 
 };

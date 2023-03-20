@@ -71,10 +71,10 @@ export const BtnFollow = styled.button`
 
 export const ImgThumb = styled.div`
   position: absolute;
-  width: 62px;
-  height: 62px;
+  width: 67px;
+  height: 67px;
   top: 186px;
-  left: 154px;
+  left: 152px;
   background-color: rgb(87, 54, 163);
   border-radius: 50%;
   display: flex;
@@ -91,7 +91,7 @@ export const Ellipse = styled.img`
 
 export const Avatar = styled.img`
   position: absolute;
-  top: 15px;
+  top: 14px;
 `;
 
 export const Line = styled.div`

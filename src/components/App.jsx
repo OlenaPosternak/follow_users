@@ -1,10 +1,9 @@
 import { Users } from './ListOfUsers/ListOfUsers';
 import { Container } from './App.styled';
 export const App = () => {
-  return(
+  return (
     <Container>
-
-        <Users />
+      <Users />
     </Container>
-  ) 
+  );
 };

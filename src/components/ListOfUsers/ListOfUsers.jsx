@@ -55,9 +55,11 @@ export const Users = () => {
       });
     });
   };
+useEffect(()=>{
 
-  localStorage.setItem('userInfo', JSON.stringify(userInfo));
-  localStorage.setItem('followedUsersID', JSON.stringify(followedUsersID));
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    localStorage.setItem('followedUsersID', JSON.stringify(followedUsersID));
+},[userInfo, followedUsersID])
 
   return (
     <List>

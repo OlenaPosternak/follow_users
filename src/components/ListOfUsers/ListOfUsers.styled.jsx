@@ -80,6 +80,7 @@ export const ImgThumb = styled.div`
   display: flex;
   align-items: end;
   justify-content: center;
+
 `;
 
 export const Ellipse = styled.img`
@@ -87,11 +88,13 @@ export const Ellipse = styled.img`
   right: 150px;
   top: 178px;
   z-index: 100;
+
 `;
 
 export const Avatar = styled.img`
   position: absolute;
   top: 14px;
+
 `;
 
 export const Line = styled.div`

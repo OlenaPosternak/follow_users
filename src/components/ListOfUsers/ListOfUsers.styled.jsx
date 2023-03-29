@@ -1,6 +1,17 @@
 import styled from 'styled-components';
 import { ReactComponent as Logo } from '../../img/Logo.svg';
+import background from '../../img/picture.png';
 
+export const MainTitle = styled.h1`
+  text-align: center;
+  margin-top: 20px;
+  font-size: 44px;
+  color: #f8f4f4;
+  border: 1px solid #471ca9;
+  background-color: #471ca9;
+  border-radius: 5px;
+  height: 65px;
+`;
 export const LogoIcon = styled(Logo)`
   position: absolute;
   top: 20px;
@@ -29,10 +40,27 @@ export const ListItem = styled.li`
   position: relative;
   width: 380px;
   height: 460px;
-  background-image: linear-gradient(#471ca9, #5736a3, #4b2a99);
+  background-image: url(${background}),
+    linear-gradient(#471ca9, #5736a3, #4b2a99);
+  background-repeat: no-repeat;
+  background-size: 308px 168px, cover;
+  background-position: 36px 28px, 0 0;
   box-shadow: -2.5776965618133545px 6.873857021331787px 20.621572494506836px 0px
     #0000003b;
   border-radius: 20px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 214px;
+    height: 8px;
+    width: 100%;
+    background-color: #ebd8ff;
+
+    box-shadow: 0px 4.391631126403809px 3.2937235832214355px 0px #fbf8ff inset;
+    box-shadow: 0px 3.4369285106658936px 3.4369285106658936px 0px #0000000f;
+    box-shadow: 0px -1.7184642553329468px 3.4369285106658936px 0px #ae7be3 inset;
+  }
 `;
 
 export const BtnFollow = styled.button`
@@ -71,6 +99,7 @@ export const BtnFollow = styled.button`
 
 export const ImgThumb = styled.div`
   position: absolute;
+  z-index: 10;
   width: 67px;
   height: 67px;
   top: 186px;
@@ -80,7 +109,6 @@ export const ImgThumb = styled.div`
   display: flex;
   align-items: end;
   justify-content: center;
-
 `;
 
 export const Ellipse = styled.img`
@@ -88,22 +116,11 @@ export const Ellipse = styled.img`
   right: 150px;
   top: 178px;
   z-index: 100;
-
 `;
 
 export const Avatar = styled.img`
   position: absolute;
   top: 14px;
-
-`;
-
-export const Line = styled.div`
-  height: 8px;
-  background-color: #ebd8ff;
-
-  box-shadow: 0px 4.391631126403809px 3.2937235832214355px 0px #fbf8ff inset;
-  box-shadow: 0px 3.4369285106658936px 3.4369285106658936px 0px #0000000f;
-  box-shadow: 0px -1.7184642553329468px 3.4369285106658936px 0px #ae7be3 inset;
 `;
 
 export const UserInfo = styled.p`
@@ -113,16 +130,13 @@ export const UserInfo = styled.p`
   text-align: center;
   line-height: 1.22;
 
-  &.tweets {
-    margin-top: 62px;
-  }
-
   &.followers {
     margin-top: 16px;
   }
 `;
 
 export const InfoSection = styled.div`
+  margin-top: 284px;
   display: flex;
   flex-direction: column;
   align-items: center;

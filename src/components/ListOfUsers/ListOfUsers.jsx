@@ -1,16 +1,14 @@
 import { useState, useEffect } from 'react';
 import users from '../../users';
-import background from '../../img/picture.png';
 import ellipse from '../../img/Ellipse.png';
 
 import {
+  MainTitle,
   LogoIcon,
-  BackImg,
   List,
   BtnFollow,
   ListItem,
   ImgThumb,
-  Line,
   Ellipse,
   UserInfo,
   InfoSection,
@@ -55,44 +53,45 @@ export const Users = () => {
       });
     });
   };
-useEffect(()=>{
-
+  useEffect(() => {
     localStorage.setItem('userInfo', JSON.stringify(userInfo));
     localStorage.setItem('followedUsersID', JSON.stringify(followedUsersID));
-},[userInfo, followedUsersID])
+  }, [userInfo, followedUsersID]);
 
   return (
-    <List>
-      {userInfo.map(({ id, avatar, tweets, followers }) => {
-        return (
-          <ListItem key={id}>
-            <LogoIcon />
-            <BackImg src={background} alt="icons" />
-            <div>
-              <Ellipse src={ellipse} alt="ellipse" />
-              <ImgThumb>
-                <Avatar src={avatar} alt="user" width={50} />
-              </ImgThumb>
-              <Line />
-            </div>
-            <InfoSection>
-              <UserInfo className="tweets">{tweets} TWEETS </UserInfo>
-              <UserInfo className="followers">
-                {followers.toLocaleString()} FOLLOWERS{' '}
-              </UserInfo>
+    <>
+      <MainTitle>FOLLOW USERS</MainTitle>
+      <List>
+        {userInfo.map(({ id, avatar, tweets, followers }) => {
+          return (
+            <ListItem key={id}>
+              <LogoIcon />
+              <div>
+                <Ellipse src={ellipse} alt="ellipse" />
+                <ImgThumb>
+                  <Avatar src={avatar} alt="user" width={50} />
+                </ImgThumb>
+                {/* <Line /> */}
+              </div>
+              <InfoSection>
+                <UserInfo className="tweets">{tweets} TWEETS </UserInfo>
+                <UserInfo className="followers">
+                  {followers.toLocaleString('en-us')} FOLLOWERS{' '}
+                </UserInfo>
 
-              <BtnFollow
-                onClick={() => toggleFollowing(id)}
-                className={
-                  followedUsersID.includes(id) ? 'following' : 'follow'
-                }
-              >
-                {followedUsersID.includes(id) ? 'Following' : 'Follow'}
-              </BtnFollow>
-            </InfoSection>
-          </ListItem>
-        );
-      })}
-    </List>
+                <BtnFollow
+                  onClick={() => toggleFollowing(id)}
+                  className={
+                    followedUsersID.includes(id) ? 'following' : 'follow'
+                  }
+                >
+                  {followedUsersID.includes(id) ? 'Following' : 'Follow'}
+                </BtnFollow>
+              </InfoSection>
+            </ListItem>
+          );
+        })}
+      </List>
+    </>
   );
 };
